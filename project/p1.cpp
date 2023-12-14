@@ -3,47 +3,53 @@
 #include <vector>
 using namespace std;
 
-void addTasks(vector<string> &task)
+void addTasks(vector<string> &task) // pass by referance to insert text to original string in main()
 {
     string text;
     cout << "Enter Task: ";
-    cin.ignore();
+    cin.ignore(); // bypass the looping that occurs when entering a string
     getline(cin, text);
     task.push_back(text);
     cout << "\n";
     cout << "Task added succesfully " << endl;
 }
-void displayTasks(vector<string> display)
+void displayTasks(vector<string> display) // size of vector in main
 {
     cout << "To-do list: " << endl;
-    for (int i = 0; i < display.size(); i++)
+    for (int i = 0; i < display.size(); i++) 
     {
         cout << i << " " << display[i] << endl;
     }
 }
-void removeTask(vector<string> &removal)
+void removeTask(vector<string> &removal) // pass by reference to make any changes reflect the original string in main
 {
     cout << "Enter a task number to remove: " << endl;
     int option;
     cin >> option;
-    if(option < 0) {
+    if (option < 0)
+    {
         cout << "Invalid entry, enter a task number" << endl;
-    } else {
-         removal.erase(removal.begin() + option);
-         cout << "Tasks removed successfully!" << endl;
     }
-   
+    else
+    {
+        removal.erase(removal.begin() + option); //removes the string from the vector
+        cout << "Tasks removed successfully!" << endl;
+    }
 }
-void markCompleted(vector<string>&complete) {
+void markCompleted(vector<string> &complete) // enter a number from display list and say completed 
+{
     cout << "Enter the task number to mark as completed ";
     int option;
     cin >> option;
-    if(option<0) {
+    if (option < 0)
+    {
         cout << "Invalid entry, enter a task number " << endl;
-    } else {
+    }
+    else
+    {
+        
         cout << "Task marked as completed " << endl;
     }
-    
 }
 
 int main()
@@ -67,14 +73,18 @@ int main()
 
         switch (option)
         {
-        case 1: addTasks(task);
+        case 1:
+            addTasks(task);
             break;
-        case 2: displayTasks(task);
+        case 2:
+            displayTasks(task);
             break;
-        case 3: removeTask(task);
+        case 3:
+            removeTask(task);
             break;
-        case 4: markCompleted(task);
-            break; 
+        case 4:
+            markCompleted(task);
+            break;
         case 5:
             cout << "Exiting Program " << endl;
             break;
